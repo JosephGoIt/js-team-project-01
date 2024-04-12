@@ -2,20 +2,20 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://JosephGoIt.github.io/br-07-javascript",
+  "homepage": "https://JosephGoIt.github.io/branch_roel",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /br-07-javascript/"
+    "build": "parcel build src/*.html --public-url /branch_roel/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JosephGoit/br-07-javascript.git"
+    "url": "git+https://github.com/JosephGoit/branch_roel.git"
   },
   "keywords": [],
-  "author": "Joseph <spongkj@gmail.com>",
+  "author": "Roel Edeleon <roel.edeleon@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JosephGoIt/br-07-javascript/issues"
+    "url": "https://github.com/JosephGoIt/branch_roel/issues"
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",

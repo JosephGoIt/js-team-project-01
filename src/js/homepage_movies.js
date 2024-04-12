@@ -11,7 +11,7 @@ import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-aio.js';
 
 import { findGenresOfMovie } from './find-genre';
-import img from '../images/foto.jpg';
+import img from '../images/desktop/film-image-desktop.jpg';
 
 // ----- DECLARATIONS | Fetch
 

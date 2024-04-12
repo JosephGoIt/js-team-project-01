@@ -1,7 +1,7 @@
 // ----- IMPORTS
 
 import { fetchFilmDetailsById } from './modal_fetch-film-card-details';
-import noPosterURL from '../images/foto.jpg';
+import noPosterURL from '../images/desktop/film-image-desktop.jpg';
 import closeBtnIcon from '../images/icon/symbol-defs.svg';
 import {
   dataSaveQueue,

@@ -5,13 +5,15 @@ import { renderMyLibraryWatched } from './render_mylibrary';
 import { renderMyLibraryQueue } from './render_mylibrary';
 import { readLocalStorageData, deserializeData } from './api/local-storage-API';
 
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+
+// ----- DECLARATIONS
+
 const MOVIES_PER_PAGE = 20;
 
 const paginationMyLibraryContainer = document.querySelector(
   '.pagination-mylibrary_container'
 );
-
-// ----- DECLARATIONS
 
 let movies = [];
 let splittedMovieSet;
@@ -40,6 +42,7 @@ export function updateMoviesGalleryByStatus(status, pageNumber) {
   splittedMovieSet = splitSet(movies, MOVIES_PER_PAGE, totalPages);
 
   if (status === 'queue') {
+    loadLoading();
     if (!splittedMovieSet.get(currentPage) && currentPage) {
       renderMyLibraryQueue(splittedMovieSet.get(currentPage - 1));
       if (currentPage <= 1) {
@@ -51,8 +54,10 @@ export function updateMoviesGalleryByStatus(status, pageNumber) {
       renderMyLibraryQueue(splittedMovieSet.get(currentPage));
       paginationMyLibrary(currentPage, totalPages);
     }
+    removeLoading();
   }
   if (status === 'watched') {
+    loadLoading();
     if (!splittedMovieSet.get(currentPage) && currentPage) {
       renderMyLibraryWatched(splittedMovieSet.get(currentPage - 1));
       if (currentPage <= 1) {
@@ -64,6 +69,7 @@ export function updateMoviesGalleryByStatus(status, pageNumber) {
       renderMyLibraryWatched(splittedMovieSet.get(currentPage));
       paginationMyLibrary(currentPage, totalPages);
     }
+    removeLoading();
   }
 
   paginationMyLibraryContainer.removeEventListener(
@@ -81,7 +87,19 @@ export function updateMoviesGalleryByStatus(status, pageNumber) {
   );
 }
 
-// ----- SPLIT MOVIE SET
+// ----- FUNCTIONS | Loading
+
+function loadLoading() {
+  Loading.pulse({
+    svgColor: 'purple',
+  });
+}
+
+function removeLoading() {
+  Loading.remove(100);
+}
+
+// ----- FUNCTIONS | SPLIT MOVIE SET
 
 function splitSet(dataSet, chunckSize, totalSize) {
   const spliettedSet = new Map();

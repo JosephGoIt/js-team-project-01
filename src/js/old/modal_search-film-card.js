@@ -1,6 +1,6 @@
 // ----- IMPORTS
 
-import { fetchFilmDetailsById } from './modal_fetch-film-card-details';
+import { fetchFilmDetailsById } from '../modal_fetch-film-card-details';
 import noPosterURL from '../images/foto.jpg';
 import closeBtnIcon from '../images/icon/symbol-defs.svg';
 import {
@@ -8,7 +8,7 @@ import {
   dataSaveWatch,
   removeSaveWatch,
   removeSaveQueue,
-} from './modal_add-film-card';
+} from '../modal_add-film-card';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 // ----- DECLARATION

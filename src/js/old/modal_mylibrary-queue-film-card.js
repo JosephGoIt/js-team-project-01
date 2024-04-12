@@ -1,6 +1,6 @@
 // ----- IMPORTS
 
-import { fetchFilmDetailsById } from './modal_fetch-film-card-details';
+import { fetchFilmDetailsById } from '../modal_fetch-film-card-details';
 import noPosterURL from '../images/foto.jpg';
 import closeBtnIcon from '../images/icon/symbol-defs.svg';
 import {
@@ -8,15 +8,15 @@ import {
   dataSaveWatch,
   removeSaveWatch,
   removeSaveQueue,
-} from './modal_add-film-card';
+} from '../modal_add-film-card';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
-import { updateMoviesGalleryByStatus } from './mylibrary_update-details';
+import { updateMoviesGalleryByStatus } from '../mylibrary_update-details';
 
-// ----- DECLARATIONS
+// ----- DECLARATION
 
 const refs = {
-  galleryWatchBox: document.querySelector('.gallery_watch-box'),
+  galleryQueueBox: document.querySelector('.gallery_queue-box'),
   filmModal: document.querySelector('[data-modal]'),
   body: document.querySelector('body'),
 };
@@ -26,13 +26,13 @@ const cache = [];
 
 // ----- EVENT LISTENERS
 
-refs.galleryWatchBox.addEventListener('click', onGalleryBoxClick);
+refs.galleryQueueBox.addEventListener('click', onGalleryBoxClick);
 refs.filmModal.addEventListener('click', onBackdropModalClick);
 
 // ----- FUNCTIONS | onGalleryBoxClick
 
 async function onGalleryBoxClick(event) {
-  if (event.target.classList.contains('gallery_fetch-box')) {
+  if (event.target.classList.contains('gallery_queue-box')) {
     return;
   }
 
@@ -133,8 +133,8 @@ function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
   enableScroll();
 
-  //---- Update Watch Gallery on Close
-  updateMoviesGalleryByStatus('watched', globalCurrentPage);
+  //---- Update Queue Gallery on Close
+  updateMoviesGalleryByStatus('queue', globalCurrentPage);
 }
 
 function onEscKeyPress(e) {
@@ -177,7 +177,7 @@ function onAddQueueBtn({ target }) {
     }
   }
 
-  updateMoviesGalleryByStatus('watch');
+  updateMoviesGalleryByStatus('queue');
 
   disableBtn(target);
   enableBtn(document.querySelector('[button-add-watch]'));

@@ -13,12 +13,14 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 import { updateMoviesGalleryByStatus } from './mylibrary_update-details';
 
-// ----- DECLARATION
+// ----- DECLARATIONS
 
 const refs = {
-  galleryQueueBox: document.querySelector('.gallery_queue-box'),
+  galleryWatchBox: document.querySelector('.gallery_watch-box'),
   filmModal: document.querySelector('[data-modal]'),
   body: document.querySelector('body'),
+
+  galleryQueueBox: document.querySelector('.gallery_queue-box'),
 };
 
 let filmDetails = {};
@@ -26,13 +28,80 @@ const cache = [];
 
 // ----- EVENT LISTENERS
 
-refs.galleryQueueBox.addEventListener('click', onGalleryBoxClick);
+refs.galleryWatchBox.addEventListener('click', onGalleryWatchBoxClick);
+refs.galleryQueueBox.addEventListener('click', onGalleryQueueBoxClick);
 refs.filmModal.addEventListener('click', onBackdropModalClick);
 
-// ----- FUNCTIONS | onGalleryBoxClick
+// ----- FUNCTIONS | onGalleryQueueBoxClick
 
-async function onGalleryBoxClick(event) {
+async function onGalleryQueueBoxClick(event) {
   if (event.target.classList.contains('gallery_queue-box')) {
+    return;
+  }
+
+  const filmId = Number(event.target.closest('.card').id);
+
+  let cachedFilmDetails = cache.find(film => film.id === filmId);
+
+  if (cachedFilmDetails) {
+    filmDetails = cachedFilmDetails;
+  } else {
+    try {
+      filmDetails = await fetchFilmDetailsById(filmId);
+    } catch (err) {
+      console.log(err.message);
+      console.log(err.code);
+    }
+
+    cache.push(filmDetails);
+  }
+  clearFilmModalMarkup();
+
+  renderFilmModal(filmDetails);
+
+  const modalButtonsRefs = {
+    closeBtn: document.querySelector('[button-modal-close]'),
+    addQueueBtn: document.querySelector('[button-add-queue]'),
+    addWatchBtn: document.querySelector('[button-add-watch]'),
+    unselectBtn: document.querySelector('[button-unselect]'),
+  };
+
+  enableBtn(modalButtonsRefs.unselectBtn);
+
+  modalButtonsRefs.closeBtn.addEventListener('click', onCloseModal);
+  modalButtonsRefs.addQueueBtn.addEventListener('click', onAddQueueBtn);
+  modalButtonsRefs.addWatchBtn.addEventListener('click', onAddWatchBtn);
+  modalButtonsRefs.unselectBtn.addEventListener('click', onUnselectBtn);
+
+  const watchedMovies = getMovies('watched') || [];
+  const moviesInQueue = getMovies('queue') || [];
+
+  // Check if Movie Watched / Queue
+
+  const isMovieWatched = watchedMovies.some(
+    movie => movie.id === filmDetails.id
+  );
+
+  const isMovieInQueue = moviesInQueue.some(
+    movie => movie.id === filmDetails.id
+  );
+
+  if (isMovieInQueue) {
+    disableBtn(modalButtonsRefs.addQueueBtn);
+  }
+
+  if (isMovieWatched) {
+    disableBtn(modalButtonsRefs.addWatchBtn);
+  }
+
+  onOpenModal();
+  window.addEventListener('keydown', onEscKeyPress);
+}
+
+// ----- FUNCTIONS | onGalleryWatchBoxClick
+
+async function onGalleryWatchBoxClick(event) {
+  if (event.target.classList.contains('gallery_fetch-box')) {
     return;
   }
 
@@ -133,8 +202,8 @@ function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
   enableScroll();
 
-  //---- Update Queue Gallery on Close
-  updateMoviesGalleryByStatus('queue', globalCurrentPage);
+  //---- Update Watch Gallery on Close
+  updateMoviesGalleryByStatus('watched', globalCurrentPage);
 }
 
 function onEscKeyPress(e) {
@@ -177,7 +246,7 @@ function onAddQueueBtn({ target }) {
     }
   }
 
-  updateMoviesGalleryByStatus('queue');
+  updateMoviesGalleryByStatus('watch');
 
   disableBtn(target);
   enableBtn(document.querySelector('[button-add-watch]'));

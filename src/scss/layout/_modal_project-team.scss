@@ -21,15 +21,17 @@
 
   width: 300px;
   height: 580px;
-  padding: 10px;
+  padding: 15px;
+  gap: 10px;
 
+ 
   @media screen and (min-width: 728px) {
     width: 700px;
-    height: 450px;
+    height: 500px;
   }
   @media screen and (min-width: 1280px) {
     width: 850px;
-    height: 500px;
+    height: 600px;
     padding: 20px 15px;
   }
 
@@ -39,10 +41,18 @@
   border-radius: 7px;
 }
 
+.group {
+  padding: 15px;
+}
+
 .group-title {
-  color: $orange;
+  color: #FF6B01;;
   text-transform: uppercase;
   text-align: center;
+  padding: 15px;
+  border-bottom: 1px solid #FF6B01;
+  // background-color: #FF6B01;
+  border-radius: 5px 5px 0 0;
 
   margin-bottom: 20px;
 
@@ -71,7 +81,10 @@
 }
 
 .group-item {
+  padding: 5px; 
   text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   flex-basis: calc((100% - 10px) / 3);
 
   @media screen and (min-width: 728px) {
@@ -105,18 +118,23 @@
 
 .group-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
+  float: right;
 
   box-sizing: border-box;
   cursor: pointer;
 }
 
 .group-close-icon {
+  color: #aaa;
+  
+
   &:hover,
   &:focus {
-    fill: $orange-bg;
-
+    fill: #FF6B01;
+    background-color: #dfdad7;
+    border-radius: 8px;
     // animation
     animation-name: 'close';
     animation-duration: 1000ms;
@@ -134,10 +152,11 @@
   }
 }
 
+
 .info-partner {
   position: relative;
   overflow: hidden;
-
+  border-radius: 0 0 5px 5px;
   margin-top: 10px;
 }
 

@@ -19,17 +19,23 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 300px;
+  width: 200px;
   height: 580px;
-  padding: 10px;
+  padding: 15px;
+  gap: 10px;
+
+  @media screen and (max-width: 727px) {
+    width: 400px;
+    height: 825px;
+  }
 
   @media screen and (min-width: 728px) {
     width: 700px;
-    height: 450px;
+    height: 600px;
   }
   @media screen and (min-width: 1280px) {
     width: 850px;
-    height: 500px;
+    height: 700px;
     padding: 20px 15px;
   }
 
@@ -39,10 +45,18 @@
   border-radius: 7px;
 }
 
+.group {
+  padding: 15px;
+}
+
 .group-title {
-  color: $orange;
+  color: #FF6B01;;
   text-transform: uppercase;
   text-align: center;
+  padding: 15px;
+  border-bottom: 1px solid #FF6B01;
+  // background-color: #FF6B01;
+  border-radius: 5px 5px 0 0;
 
   margin-bottom: 20px;
 
@@ -57,10 +71,16 @@
   justify-content: center;
 
   row-gap: 10px;
-  column-gap: 5px;
+  column-gap: 20px;
+
+  @media screen and (max-width: 727px) {
+    row-gap: 10px;
+    column-gap: 5px;
+  }
+
 
   @media screen and (min-width: 728px) {
-    row-gap: 30px;
+    row-gap: 15px;
     column-gap: 10px;
   }
 
@@ -71,11 +91,15 @@
 }
 
 .group-item {
+  padding: 5px; 
+  margin: 8px;
   text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   flex-basis: calc((100% - 10px) / 3);
 
   @media screen and (min-width: 728px) {
-    flex-basis: calc((100% - 50px) / 6);
+    flex-basis: calc((100% - 50px) / 5);
   }
 
   transition: transform 0.25s;
@@ -91,6 +115,11 @@
   width: 60px;
   height: 60px;
 
+  @media screen and (max-width: 727px) {
+      width: 70px;
+      height: 70px;
+  }
+
   @media screen and (min-width: 728px) {
     width: 80px;
     height: 80px;
@@ -105,18 +134,23 @@
 
 .group-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
+  float: right;
 
   box-sizing: border-box;
   cursor: pointer;
 }
 
 .group-close-icon {
+  color: #aaa;
+  
+
   &:hover,
   &:focus {
-    fill: $orange-bg;
-
+    fill: #FF6B01;
+    background-color: #dfdad7;
+    border-radius: 8px;
     // animation
     animation-name: 'close';
     animation-duration: 1000ms;
@@ -134,10 +168,11 @@
   }
 }
 
+
 .info-partner {
   position: relative;
   overflow: hidden;
-
+  border-radius: 0 0 5px 5px;
   margin-top: 10px;
 }
 
@@ -155,9 +190,15 @@
   }
 }
 
+.about-partner {
+  padding: 5px;
+  border-radius: 0 0 5px 5px;
+}
+
 .partner-name {
   font-weight: 500;
   margin-bottom: 0;
+  color:#FF6B01;
 }
 
 .partner-position {
@@ -216,7 +257,7 @@
 
   @media screen and (min-width: 728px) {
     width: 20px;
-    height: 20px;
+    height: 25px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -227,13 +268,13 @@
 
 .about-partner,
 .social {
-  height: 50px;
+  height: 55px;
 
   @media screen and (min-width: 728px) {
-    height: 60px;
+    height: 65px;
   }
 
   @media screen and (min-width: 1280px) {
-    height: 65px;
+    height: 70px;
   }
 }

@@ -2,20 +2,20 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://JosephGoIt.github.io/branch_roel",
+  "homepage": "https://JosephGoIt.github.io/js-team-project-01",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /branch_roel/"
+    "build": "parcel build src/*.html --public-url /js-team-project-01/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JosephGoit/branch_roel.git"
+    "url": "git+https://github.com/JosephGoit/js-team-project-01.git"
   },
   "keywords": [],
-  "author": "Roel Edeleon <roel.edeleon@gmail.com>",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JosephGoIt/branch_roel/issues"
+    "url": "https://github.com/JosephGoIt/js-team-project-01/issues"
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",

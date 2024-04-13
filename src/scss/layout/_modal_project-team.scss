@@ -75,7 +75,7 @@
 
   @media screen and (max-width: 727px) {
     row-gap: 10px;
-    column-gap: 10px;
+    column-gap: 5px;
   }
 
 
@@ -92,14 +92,14 @@
 
 .group-item {
   padding: 5px; 
-  margin: 10px;
+  margin: 8px;
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   flex-basis: calc((100% - 10px) / 3);
 
   @media screen and (min-width: 728px) {
-    flex-basis: calc((100% - 50px) / 6);
+    flex-basis: calc((100% - 50px) / 5);
   }
 
   transition: transform 0.25s;

@@ -19,19 +19,23 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 300px;
+  width: 200px;
   height: 580px;
   padding: 15px;
   gap: 10px;
 
- 
+  @media screen and (max-width: 727px) {
+    width: 400px;
+    height: 825px;
+  }
+
   @media screen and (min-width: 728px) {
     width: 700px;
-    height: 500px;
+    height: 600px;
   }
   @media screen and (min-width: 1280px) {
     width: 850px;
-    height: 600px;
+    height: 700px;
     padding: 20px 15px;
   }
 
@@ -67,10 +71,16 @@
   justify-content: center;
 
   row-gap: 10px;
-  column-gap: 5px;
+  column-gap: 20px;
+
+  @media screen and (max-width: 727px) {
+    row-gap: 10px;
+    column-gap: 10px;
+  }
+
 
   @media screen and (min-width: 728px) {
-    row-gap: 30px;
+    row-gap: 15px;
     column-gap: 10px;
   }
 
@@ -82,6 +92,7 @@
 
 .group-item {
   padding: 5px; 
+  margin: 10px;
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -103,6 +114,11 @@
   margin: 0 auto;
   width: 60px;
   height: 60px;
+
+  @media screen and (max-width: 727px) {
+      width: 70px;
+      height: 70px;
+  }
 
   @media screen and (min-width: 728px) {
     width: 80px;
@@ -174,9 +190,15 @@
   }
 }
 
+.about-partner {
+  padding: 5px;
+  border-radius: 0 0 5px 5px;
+}
+
 .partner-name {
   font-weight: 500;
   margin-bottom: 0;
+  color:#FF6B01;
 }
 
 .partner-position {
@@ -235,7 +257,7 @@
 
   @media screen and (min-width: 728px) {
     width: 20px;
-    height: 20px;
+    height: 25px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -246,13 +268,13 @@
 
 .about-partner,
 .social {
-  height: 50px;
+  height: 55px;
 
   @media screen and (min-width: 728px) {
-    height: 60px;
+    height: 65px;
   }
 
   @media screen and (min-width: 1280px) {
-    height: 65px;
+    height: 70px;
   }
 }
